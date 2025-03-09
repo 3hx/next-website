@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import GridBackground from "@/components/GridBackground";
+import ConvexClientProvider from "@/components/ConvexClientProvider";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -25,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <GridBackground />
-        {children}
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   );

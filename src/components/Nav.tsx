@@ -15,6 +15,7 @@ export default function Nav() {
   const linkRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({
     features: null,
     pricing: null,
+    tasks: null,
     contact: null,
   });
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
@@ -166,6 +167,20 @@ export default function Nav() {
               onMouseEnter={() => handleLinkHover("pricing")}
             >
               Pricing
+            </Link>
+            <Link
+              ref={(el: HTMLAnchorElement | null) => {
+                linkRefs.current.tasks = el;
+              }}
+              className={`px-4 py-1.5 relative transition-colors duration-200 text-xs ${
+                hoveredLink === "tasks"
+                  ? "text-slate-950"
+                  : "text-slate-600 hover:text-slate-950"
+              }`}
+              href="/tasks"
+              onMouseEnter={() => handleLinkHover("tasks")}
+            >
+              Tasks
             </Link>
             <Link
               ref={(el: HTMLAnchorElement | null) => {
