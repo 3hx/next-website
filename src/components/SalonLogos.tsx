@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function SalonLogos() {
   // Note: When creating or replacing the logo images, ensure the Ruffians logo (x2.png)
   // has the porcupine element removed as requested by the client
@@ -18,9 +20,11 @@ export default function SalonLogos() {
             key={index}
             className="w-24 h-16 md:w-28 md:h-18 flex items-center justify-center"
           >
-            <img
+            <Image
               src={logo}
               alt={`Barber Shop ${index + 1}`}
+              width={112}
+              height={72}
               className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-all duration-300"
               style={{
                 filter:
