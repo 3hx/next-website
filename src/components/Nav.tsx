@@ -137,7 +137,9 @@ export default function Nav() {
           {/* Navigation Links */}
           <div className="flex space-x-4">
             <Link
-              ref={(el) => (linkRefs.current.features = el)}
+              ref={(el: HTMLAnchorElement | null) => {
+                linkRefs.current.features = el;
+              }}
               className={`px-4 py-1.5 relative transition-colors duration-200 text-xs ${
                 hoveredLink === "features"
                   ? "text-slate-950"
@@ -149,7 +151,9 @@ export default function Nav() {
               Features
             </Link>
             <Link
-              ref={(el) => (linkRefs.current.pricing = el)}
+              ref={(el: HTMLAnchorElement | null) => {
+                linkRefs.current.pricing = el;
+              }}
               className={`px-4 py-1.5 relative transition-colors duration-200 text-xs ${
                 hoveredLink === "pricing"
                   ? "text-slate-950"
@@ -161,7 +165,9 @@ export default function Nav() {
               Pricing
             </Link>
             <Link
-              ref={(el) => (linkRefs.current.contact = el)}
+              ref={(el: HTMLAnchorElement | null) => {
+                linkRefs.current.contact = el;
+              }}
               className={`px-4 py-1.5 relative transition-colors duration-200 text-xs ${
                 hoveredLink === "contact"
                   ? "text-slate-950"
