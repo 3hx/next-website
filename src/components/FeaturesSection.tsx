@@ -69,7 +69,7 @@ export default function FeaturesSection() {
   return (
     <section
       id="features"
-      className="py-24 px-4 bg-gradient-to-b from-gray-50 to-white"
+      className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">

@@ -5,6 +5,7 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { handleSmoothScroll } from "@/lib/smoothScroll";
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -146,6 +147,7 @@ export default function Nav() {
                   : "text-slate-600 hover:text-slate-950"
               }`}
               href="/#features"
+              onClick={(e) => handleSmoothScroll(e, "#features")}
               onMouseEnter={() => handleLinkHover("features")}
             >
               Features
@@ -160,6 +162,7 @@ export default function Nav() {
                   : "text-slate-600 hover:text-slate-950"
               }`}
               href="/#pricing"
+              onClick={(e) => handleSmoothScroll(e, "#pricing")}
               onMouseEnter={() => handleLinkHover("pricing")}
             >
               Pricing
@@ -173,7 +176,7 @@ export default function Nav() {
                   ? "text-slate-950"
                   : "text-slate-600 hover:text-slate-950"
               }`}
-              href="/#contact"
+              href="/contact"
               onMouseEnter={() => handleLinkHover("contact")}
             >
               Contact
