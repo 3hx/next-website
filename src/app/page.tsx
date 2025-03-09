@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import SalonLogos from "@/components/SalonLogos";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 
@@ -13,6 +14,7 @@ export default function Home() {
         <SalonLogos />
         <HeroSection />
         <FeaturesSection />
+        <PricingSection />
         <TestimonialsSection />
       </main>
       <Footer />
