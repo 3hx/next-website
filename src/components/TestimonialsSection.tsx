@@ -21,7 +21,7 @@ const testimonials: Testimonial[] = [
     name: "Mark Phillips",
     role: "Founder",
     company: "London Wing Chun",
-    avatarUrl: "/mma-1.jpg",
+    avatarUrl: "/testimonials/mma-1.jpg",
     content:
       "No More Calls has completely transformed how we manage our business communications. We're saving hours each week and our staff is much happier.",
     videoUrl: "https://www.youtube.com/embed/MPaO6m5Rq7c",
@@ -114,7 +114,7 @@ export default function TestimonialsSection() {
                       <Image
                         src={
                           testimonial.id === "1"
-                            ? "/mma-1-thumbnail.jpg"
+                            ? "/testimonials/mma-1-thumbnail.jpg"
                             : `https://img.youtube.com/vi/${testimonial.videoUrl
                                 ?.split("/")
                                 .pop()}/maxresdefault.jpg`
