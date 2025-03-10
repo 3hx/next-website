@@ -18,13 +18,13 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Sarah Johnson",
-    role: "CEO",
-    company: "StyleHair Salon",
-    avatarUrl: "/testimonials/avatar1.png",
+    name: "Mark Phillips",
+    role: "Founder",
+    company: "London Wing Chun",
+    avatarUrl: "/mma-1.jpg",
     content:
       "No More Calls has completely transformed how we manage our business communications. We're saving hours each week and our staff is much happier.",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual video URL
+    videoUrl: "https://www.youtube.com/embed/MPaO6m5Rq7c",
   },
   {
     id: "2",
@@ -112,10 +112,13 @@ export default function TestimonialsSection() {
                   <div className="aspect-video bg-gray-800 relative overflow-hidden rounded-2xl">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Image
-                        src={testimonial.avatarUrl.replace(
-                          ".png",
-                          "-video-thumbnail.jpg"
-                        )}
+                        src={
+                          testimonial.id === "1"
+                            ? "/mma-1-thumbnail.jpg"
+                            : `https://img.youtube.com/vi/${testimonial.videoUrl
+                                ?.split("/")
+                                .pop()}/maxresdefault.jpg`
+                        }
                         alt={`${testimonial.name} video testimonial`}
                         width={600}
                         height={340}

@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 // Form schema with validation
 const formSchema = z.object({
@@ -41,6 +43,7 @@ const formSchema = z.object({
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const submitForm = useMutation(api.forms.submitForm);
 
   // Define form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,21 +59,29 @@ export default function ContactPage() {
   });
 
   // Submit handler
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
 
-    // This would normally be an API call
-    console.log(values);
+    try {
+      // Submit to Convex
+      await submitForm({
+        name: `${values.firstName} ${values.lastName}`,
+        email: values.email,
+        message: `${values.subject}: ${values.message}${
+          values.company ? ` (Company: ${values.company})` : ""
+        }`,
+      });
 
-    // Simulate API delay
-    setTimeout(() => {
-      setIsSubmitting(false);
       setIsSuccess(true);
       form.reset();
 
       // Reset success message after 5 seconds
       setTimeout(() => setIsSuccess(false), 5000);
-    }, 1000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (

@@ -74,7 +74,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="pt-9 pb-12 md:pt-15 md:pb-20 lg:pt-18 lg:pb-24 px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-24 max-w-screen-2xl mx-auto">
+    <section className="pt-9 md:pt-15 lg:pt-18 px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-24 max-w-screen-2xl mx-auto">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
           Stop unwanted calls with{" "}
@@ -106,7 +106,7 @@ export default function HeroSection() {
         </div>
 
         {/* Hero image with surrounding pills */}
-        <div className="relative w-full max-w-2xl mx-auto">
+        <div className="relative w-full max-w-2xl mx-auto mb-0">
           {/* Spam Calls Pill - Top Left */}
           <motion.div
             className="absolute top-8 left-4 md:left-8 z-10"
@@ -171,7 +171,7 @@ export default function HeroSection() {
             animate="animate"
           >
             <Image
-              src="/hero.png"
+              src="/hero2.png"
               alt="Person frustrated by spam calls and distractions"
               width={800}
               height={600}

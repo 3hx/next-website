@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { ElevenLabsDemo } from "./ElevenLabsDemo";
 
 // Plan feature types
 type PlanFeature = {
@@ -27,7 +28,7 @@ const plans: Plan[] = [
   {
     id: "ai-assistant",
     title: "AI Assistant",
-    price: "$19.99",
+    price: "£19.99",
     description:
       "Perfect for individuals who need AI assistance with everyday tasks",
     features: [
@@ -45,7 +46,7 @@ const plans: Plan[] = [
   {
     id: "ai-secretary",
     title: "AI Secretary",
-    price: "$47.99",
+    price: "£47.99",
     description: "Comprehensive solution for professionals and small teams",
     features: [
       { id: "f1", text: "Can handle 3 calls at a time", included: true },
@@ -138,23 +139,27 @@ export default function PricingSection() {
               <div className="flex items-baseline mb-6">
                 <span className="text-4xl font-bold text-slate-950">
                   {billingPeriod === "annual"
-                    ? `$${Math.floor(
-                        parseFloat(plan.price.replace("$", "")) * 0.8
+                    ? `£${Math.floor(
+                        parseFloat(plan.price.replace("£", "")) * 0.8
                       )}.99`
                     : plan.price}
                 </span>
                 <span className="text-slate-600 ml-2">/month</span>
               </div>
 
-              <Button
-                className={`w-full py-6 rounded-lg mb-6 ${
-                  plan.isPopular
-                    ? "bg-slate-950 hover:bg-slate-900 text-white"
-                    : "bg-white text-slate-950 border border-slate-300 hover:bg-slate-50"
-                }`}
-              >
-                Start free trial
-              </Button>
+              {plan.isPopular ? (
+                <ElevenLabsDemo />
+              ) : (
+                <Button
+                  className={`w-full py-6 rounded-lg mb-6 ${
+                    plan.isPopular
+                      ? "bg-slate-950 hover:bg-slate-900 text-white"
+                      : "bg-white text-slate-950 border border-slate-300 hover:bg-slate-50"
+                  }`}
+                >
+                  Start free trial
+                </Button>
+              )}
 
               <p className="text-slate-600 text-sm mb-6 text-center">
                 No credit card required. 14-day free trial.

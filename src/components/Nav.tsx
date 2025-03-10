@@ -11,11 +11,11 @@ export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [isNavHovered, setIsNavHovered] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({
     features: null,
     pricing: null,
-    tasks: null,
     contact: null,
   });
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
@@ -44,6 +44,11 @@ export default function Nav() {
         width: rect.width,
       });
     }
+  };
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   // Simpler unified variants for smoother transitions
@@ -170,20 +175,6 @@ export default function Nav() {
             </Link>
             <Link
               ref={(el: HTMLAnchorElement | null) => {
-                linkRefs.current.tasks = el;
-              }}
-              className={`px-4 py-1.5 relative transition-colors duration-200 text-xs ${
-                hoveredLink === "tasks"
-                  ? "text-slate-950"
-                  : "text-slate-600 hover:text-slate-950"
-              }`}
-              href="/tasks"
-              onMouseEnter={() => handleLinkHover("tasks")}
-            >
-              Tasks
-            </Link>
-            <Link
-              ref={(el: HTMLAnchorElement | null) => {
                 linkRefs.current.contact = el;
               }}
               className={`px-4 py-1.5 relative transition-colors duration-200 text-xs ${
@@ -242,7 +233,12 @@ export default function Nav() {
             </span>
           </Link>
 
-          <Button variant="ghost" size="icon" className="text-slate-950">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-slate-950"
+            onClick={toggleMobileMenu}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -260,6 +256,42 @@ export default function Nav() {
             </svg>
           </Button>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-full left-0 right-0 bg-white shadow-lg rounded-b-xl mt-1 p-4 flex flex-col space-y-2 border border-slate-200">
+            <Link
+              href="/#features"
+              onClick={(e) => {
+                handleSmoothScroll(e, "#features");
+                setIsMobileMenuOpen(false);
+              }}
+              className="py-2 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+            >
+              Features
+            </Link>
+            <Link
+              href="/#pricing"
+              onClick={(e) => {
+                handleSmoothScroll(e, "#pricing");
+                setIsMobileMenuOpen(false);
+              }}
+              className="py-2 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+            >
+              Pricing
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-2 px-4 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+            >
+              Contact
+            </Link>
+            <Button className="w-full mt-2 bg-slate-900 text-white hover:bg-slate-800">
+              Book a call
+            </Button>
+          </div>
+        )}
       </motion.div>
     </div>
   );

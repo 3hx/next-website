@@ -7,12 +7,10 @@ export default defineSchema({
     author: v.string(),
     timestamp: v.number(),
   }),
-  tasks: defineTable({
-    title: v.string(),
-    description: v.string(),
-    isCompleted: v.boolean(),
-    dueDate: v.optional(v.number()),
-    assignedTo: v.optional(v.string()),
-    priority: v.optional(v.string()),
+  forms: defineTable({
+    name: v.string(),
+    email: v.string(),
+    message: v.string(),
+    timestamp: v.number(),
   }),
 });
